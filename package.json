@@ -1,0 +1,12 @@
+{
+  "name": "simple-portfolio",
+  "version": "1.0.0",
+  "description": "A minimal academic portfolio built with 11ty",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
