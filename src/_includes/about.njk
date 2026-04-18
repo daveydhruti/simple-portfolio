@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} - Jane Doe</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    {% include "nav.njk" %}
+
+    <h1>{{ title }}</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>{{ intro | safe }}</p>
+      <p>{{ background | safe }}</p>
+    </section>
+
+    <section class="research-interests">
+      <h2>Research Interests</h2>
+      <p>{{ researchInterests.intro }}</p>
+      <ul>
+        {% for area in researchInterests.areas %}
+        <li><strong>{{ area.name }}:</strong> {{ area.desc }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="education">
+      <h2>Education</h2>
+      {% for edu in education %}
+      <article>
+        <h3>{{ edu.degree }} {% if edu.year %}({{ edu.year }}){% endif %}</h3>
+        <p>{{ edu.school }}, {{ edu.period }}</p>
+        {% if edu.thesis %}<p><em>Thesis: "{{ edu.thesis }}"</em></p>{% endif %}
+      </article>
+      {% endfor %}
+    </section>
+
+    <section class="experience">
+      <h2>Experience</h2>
+      {% for job in experience %}
+      <article>
+        <h3>{{ job.role }}</h3>
+        <p>{{ job.org }}, {{ job.period }}</p>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section class="awards">
+      <h2>Honors &amp; Awards</h2>
+      <ul>
+        {% for award in awards %}
+        <li>{{ award }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Jane Doe. Built with 11ty.</p>
+  </footer>
+</body>
+</html>

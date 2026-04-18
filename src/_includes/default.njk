@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} - Jane Doe</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    {% include "nav.njk" %}
+
+    <h1>{{ title }}</h1>
+    {% if description %}
+    <p class="bio">{{ description }}</p>
+    {% endif %}
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Jane Doe. Built with 11ty.</p>
+  </footer>
+</body>
+</html>

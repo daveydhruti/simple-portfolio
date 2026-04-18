@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    {% include "nav.njk" %}
+
+    <h1>{{ title }}</h1>
+    <p class="bio">
+      I'm a Ph.D. student in Computer Science at Stanford University,
+      where I'm advised by Prof. Alex Chen. My research focuses on
+      understanding and improving deep learning systems, with a particular
+      interest in neural network interpretability and robustness.
+    </p>
+  </header>
+
+  <main>
+    <section class="news">
+      <h2>Latest News</h2>
+      <ul>
+        {% for item in news %}
+        <li><strong>{{ item.date }}:</strong> {{ item.text }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="publications">
+      <h2>Selected Publications</h2>
+      {% for pub in publications %}
+      <article>
+        <h3><a href="{{ pub.link }}">{{ pub.title }}</a></h3>
+        <p>{{ pub.authors | join(', ') }}</p>
+        <p><em>{{ pub.venue }}</em></p>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section class="writing">
+      <h2>Recent Writing</h2>
+      {% for post in writing %}
+      <article>
+        <h3><a href="{{ post.link }}">{{ post.title }}</a></h3>
+        <p><em>{{ post.date }}</em></p>
+        <p>{{ post.excerpt }}</p>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Jane Doe. Built with 11ty.</p>
+  </footer>
+</body>
+</html>

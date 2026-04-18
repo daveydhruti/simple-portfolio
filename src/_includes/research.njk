@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} - Jane Doe</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    {% include "nav.njk" %}
+
+    <h1>{{ title }}</h1>
+    {% if description %}
+    <p class="bio">{{ description }}</p>
+    {% endif %}
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>{{ intro }}</p>
+    </section>
+
+    <section class="publications">
+      <h2>Publications</h2>
+      {% for pub in publications %}
+      <article id="{{ pub.id }}">
+        <h3>{{ pub.title }}</h3>
+        <p class="authors">{{ pub.authors | join(', ') }}</p>
+        <p class="venue"><em>{{ pub.venue }}</em></p>
+        <p class="description">{{ pub.description }}</p>
+        <p class="links">
+          {% if pub.links.pdf %}<a href="{{ pub.links.pdf }}">[PDF]</a>{% endif %}
+          {% if pub.links.code %}<a href="{{ pub.links.code }}">[Code]</a>{% endif %}
+          {% if pub.links.slides %}<a href="{{ pub.links.slides }}">[Slides]</a>{% endif %}
+          {% if pub.links.poster %}<a href="{{ pub.links.poster }}">[Poster]</a>{% endif %}
+        </p>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section class="work-in-progress">
+      <h2>Work in Progress</h2>
+      <ul>
+        {% for project in workInProgress %}
+        <li><strong>{{ project.title }}</strong> — {{ project.status }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Jane Doe. Built with 11ty.</p>
+  </footer>
+</body>
+</html>

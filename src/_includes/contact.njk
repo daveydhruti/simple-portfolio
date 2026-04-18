@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} - Jane Doe</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    {% include "nav.njk" %}
+
+    <h1>{{ title }}</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>{{ intro }}</p>
+    </section>
+
+    <section class="contact-info">
+      <h2>Contact Information</h2>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:{{ email }}">{{ email }}</a></li>
+        <li><strong>Office:</strong><br>
+          {{ office.building }}<br>
+          {{ office.address }}
+        </li>
+        {% if social.twitter %}
+        <li><strong>Twitter:</strong> <a href="{{ social.twitter.url }}">{{ social.twitter.handle }}</a></li>
+        {% endif %}
+        {% if social.github %}
+        <li><strong>GitHub:</strong> <a href="{{ social.github.url }}">{{ social.github.handle }}</a></li>
+        {% endif %}
+        {% if social.scholar %}
+        <li><strong>Google Scholar:</strong> <a href="{{ social.scholar.url }}">{{ social.scholar.name }}</a></li>
+        {% endif %}
+        {% if social.linkedin %}
+        <li><strong>LinkedIn:</strong> <a href="{{ social.linkedin.url }}">{{ social.linkedin.name }}</a></li>
+        {% endif %}
+      </ul>
+    </section>
+
+    {% if prospectiveStudents %}
+    <section class="prospective-students">
+      <h2>For Prospective Students</h2>
+      <p>{{ prospectiveStudents }}</p>
+    </section>
+    {% endif %}
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Jane Doe. Built with 11ty.</p>
+  </footer>
+</body>
+</html>
